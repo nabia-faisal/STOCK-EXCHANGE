@@ -1,0 +1,27 @@
+# Compiled output
+target/
+*.class
+
+# IDE
+.idea/
+*.iml
+.vscode/
+.settings/
+.project
+.classpath
+bin/
+nbproject/private/
+
+# Maven
+.mvn/wrapper/maven-wrapper.jar
+
+# OS
+.DS_Store
+Thumbs.db
+
+# App runtime data (persisted state) - keep sample seed only
+data/*.dat
+data/*.log
+
+# Logs
+*.log
