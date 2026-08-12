@@ -118,9 +118,31 @@ public class DataStore {
     }
 
     private void seedDefaultTraders(Exchange exchange) {
-        exchange.registerTrader(new Admin("admin", "Administrator", "admin123"));
-        exchange.registerTrader(new RetailTrader("alice", "Alice Khan", "pass"));
-        exchange.registerTrader(new RetailTrader("bilal", "Bilal Ahmed", "pass"));
-        exchange.registerTrader(new InstitutionalTrader("megafund", "Mega Fund", "pass"));
+        Admin admin = new Admin("admin", "Administrator", "admin123");
+        seedHoldings(admin, 50);
+        exchange.registerTrader(admin);
+
+        RetailTrader alice = new RetailTrader("alice", "Alice Khan", "pass");
+        seedHoldings(alice, 100);
+        exchange.registerTrader(alice);
+
+        RetailTrader bilal = new RetailTrader("bilal", "Bilal Ahmed", "pass");
+        seedHoldings(bilal, 100);
+        exchange.registerTrader(bilal);
+
+        InstitutionalTrader megafund = new InstitutionalTrader("megafund", "Mega Fund", "pass");
+        seedHoldings(megafund, 500);
+        exchange.registerTrader(megafund);
+    }
+
+    /** Give a trader starter shares in every default stock so they can sell. */
+    private void seedHoldings(Trader trader, int sharesEach) {
+        String[][] defaultStocks = {
+            {"AAPL", "180.0"}, {"GOOG", "140.0"}, {"MSFT", "420.0"},
+            {"TSLA", "250.0"}, {"AMZN", "185.0"}, {"NVDA", "120.0"}
+        };
+        for (String[] s : defaultStocks) {
+            trader.getPortfolio().addHolding(s[0], sharesEach, Double.parseDouble(s[1]));
+        }
     }
 }

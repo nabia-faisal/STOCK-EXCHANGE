@@ -404,6 +404,7 @@ public class DashboardView implements MarketListener {
         Platform.runLater(() -> {
             refreshHistory();
             refreshPortfolio();
+            refreshAdmin();
             updateCash();
         });
     }
@@ -426,6 +427,7 @@ public class DashboardView implements MarketListener {
         refreshPortfolio();
         refreshHistory();
         refreshOrderBook();
+        refreshAdmin();
         updateCash();
         if (!marketItems.isEmpty()) {
             marketTable.getSelectionModel().selectFirst();
@@ -485,6 +487,10 @@ public class DashboardView implements MarketListener {
         askItems.setAll(book.snapshotAsks());
         Double spread = book.getSpread();
         spreadLabel.setText(spread == null ? "Spread: -" : "Spread: " + Money.format(spread));
+    }
+
+    private void refreshAdmin() {
+        traderItems.setAll(exchange.getTraders());
     }
 
     private void refreshChart() {

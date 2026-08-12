@@ -3,6 +3,7 @@ package com.nust.exchange.ui;
 import com.nust.exchange.engine.Exchange;
 import com.nust.exchange.model.InstitutionalTrader;
 import com.nust.exchange.model.RetailTrader;
+import com.nust.exchange.model.Stock;
 import com.nust.exchange.model.Trader;
 
 import javafx.geometry.Insets;
@@ -111,6 +112,10 @@ public class LoginView {
         Trader trader = "Institutional".equals(role)
                 ? new InstitutionalTrader(id, id, password)
                 : new RetailTrader(id, id, password);
+        // Seed starter shares so the new trader can sell from day one.
+        for (Stock s : exchange.getStocks()) {
+            trader.getPortfolio().addHolding(s.getSymbol(), 50, s.getLastPrice());
+        }
         exchange.registerTrader(trader);
         message.getStyleClass().remove("error");
         message.setText("Account created - you can now log in.");

@@ -30,7 +30,12 @@ class ConcurrencyTest {
 
     private Trader newTrader(Exchange ex, String id) throws Exception {
         Trader t = new InstitutionalTrader(id, id, "pw");
-        t.getPortfolio().deposit(1_000_000 - t.getPortfolio().getCashBalance());
+        double currentCash = t.getPortfolio().getCashBalance();
+        if (currentCash < 1_000_000) {
+            t.getPortfolio().deposit(1_000_000 - currentCash);
+        } else if (currentCash > 1_000_000) {
+            try { t.getPortfolio().withdraw(currentCash - 1_000_000); } catch (Exception ignored) {}
+        }
         t.getPortfolio().addHolding(SYM, 2_000, 100.0);
         ex.registerTrader(t);
         return t;

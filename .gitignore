@@ -25,3 +25,7 @@ data/*.log
 
 # Logs
 *.log
+
+# Screenshots
+ss/
+
