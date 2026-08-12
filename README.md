@@ -124,7 +124,7 @@ StockExchange/
 
 ## 8. UML Architecture
 
-The complete class diagram showing the exact architecture (including models, engines, persistence mapping, and JavaFX controllers) is available in [UML_DIAGRAM.md](UML_DIAGRAM.md).
+The complete class diagram showing the exact architecture (including models, engines, persistence mapping, and JavaFX controllers) is available in.
 
 
 ## 8. Data files (created at runtime in `data/`)

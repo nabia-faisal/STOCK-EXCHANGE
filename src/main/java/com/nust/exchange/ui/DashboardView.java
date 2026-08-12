@@ -163,7 +163,7 @@ public class DashboardView implements MarketListener {
         marketTable.getColumns().add(col("Change", (Stock s) -> String.format("%+.2f%%", s.getChangePercent())));
         marketTable.getColumns().add(col("Bid", (Stock s) -> priceOrDash(bestBid(s.getSymbol()))));
         marketTable.getColumns().add(col("Ask", (Stock s) -> priceOrDash(bestAsk(s.getSymbol()))));
-        marketTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+        marketTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY_FLEX_LAST_COLUMN);
         marketTable.getSelectionModel().selectedItemProperty().addListener((obs, old, sel) -> {
             if (sel != null) {
                 selectSymbol(sel.getSymbol());
@@ -277,7 +277,7 @@ public class DashboardView implements MarketListener {
         holdingsTable.getColumns().add(col("Market Price", (Holding h) -> priceOrDash(currentPrice(h.getSymbol()))));
         holdingsTable.getColumns().add(col("Market Value", (Holding h) -> marketValue(h)));
         holdingsTable.getColumns().add(col("Unrealized P&L", (Holding h) -> unrealizedPnl(h)));
-        holdingsTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+        holdingsTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY_FLEX_LAST_COLUMN);
 
         portfolioValueLabel.getStyleClass().add("big-value");
 
@@ -296,12 +296,12 @@ public class DashboardView implements MarketListener {
         bidsTable.getColumns().add(col("Bid Price", (LimitOrder l) -> Money.format(l.getLimitPrice())));
         bidsTable.getColumns().add(col("Quantity", (LimitOrder l) -> String.valueOf(l.getRemainingQuantity())));
         bidsTable.getColumns().add(col("Trader", (LimitOrder l) -> l.getOwner().getId()));
-        bidsTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+        bidsTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY_FLEX_LAST_COLUMN);
 
         asksTable.getColumns().add(col("Ask Price", (LimitOrder l) -> Money.format(l.getLimitPrice())));
         asksTable.getColumns().add(col("Quantity", (LimitOrder l) -> String.valueOf(l.getRemainingQuantity())));
         asksTable.getColumns().add(col("Trader", (LimitOrder l) -> l.getOwner().getId()));
-        asksTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+        asksTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY_FLEX_LAST_COLUMN);
 
         VBox bidsBox = new VBox(6, sectionTitle("Bids (buyers)"), bidsTable);
         VBox asksBox = new VBox(6, sectionTitle("Asks (sellers)"), asksTable);
@@ -330,7 +330,7 @@ public class DashboardView implements MarketListener {
         tradesTable.getColumns().add(col("Value", (Trade t) -> Money.format(t.getValue())));
         tradesTable.getColumns().add(col("Buyer", (Trade t) -> t.getBuyerId()));
         tradesTable.getColumns().add(col("Seller", (Trade t) -> t.getSellerId()));
-        tradesTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+        tradesTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY_FLEX_LAST_COLUMN);
 
         VBox box = new VBox(12, sectionTitle("Recent Trades (most recent first)"), tradesTable);
         box.setPadding(new Insets(16));
@@ -377,7 +377,7 @@ public class DashboardView implements MarketListener {
         tradersTable.getColumns().add(col("Name", (Trader t) -> t.getName()));
         tradersTable.getColumns().add(col("Role", (Trader t) -> t.role()));
         tradersTable.getColumns().add(col("Cash", (Trader t) -> Money.format(t.getPortfolio().getCashBalance())));
-        tradersTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+        tradersTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY_FLEX_LAST_COLUMN);
 
         VBox box = new VBox(12, sectionTitle("List a New Instrument"), addRow, adminMsg,
                 sectionTitle("All Traders"), tradersTable);
