@@ -1,0 +1,92 @@
+/* NUST Exchange - JavaFX theme */
+
+.root {
+    -fx-font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    -fx-font-size: 13px;
+    -fx-background-color: #f4f6f9;
+}
+
+/* ---------- Login ---------- */
+.login-bg {
+    -fx-background-color: linear-gradient(to bottom right, #1a2a6c, #2a5298);
+}
+
+.card {
+    -fx-background-color: white;
+    -fx-background-radius: 12;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 20, 0, 0, 6);
+}
+
+.title {
+    -fx-font-size: 30px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1a2a6c;
+}
+
+.subtitle {
+    -fx-font-size: 14px;
+    -fx-text-fill: #667;
+}
+
+.error {
+    -fx-text-fill: #c0392b;
+}
+
+.success {
+    -fx-text-fill: #1e7e34;
+}
+
+/* ---------- Buttons ---------- */
+.button {
+    -fx-background-radius: 8;
+    -fx-cursor: hand;
+    -fx-padding: 8 16 8 16;
+}
+
+.button.primary {
+    -fx-background-color: #2a5298;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.button.primary:hover {
+    -fx-background-color: #1a2a6c;
+}
+
+/* ---------- Header ---------- */
+.header {
+    -fx-background-color: #1a2a6c;
+}
+
+.header-title {
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+
+.header-cash {
+    -fx-text-fill: #cfe3ff;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+/* ---------- Dashboard ---------- */
+.section-title {
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1a2a6c;
+}
+
+.big-value {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1e7e34;
+}
+
+.table-view {
+    -fx-background-radius: 8;
+}
+
+.tab-pane .tab-header-area .tab {
+    -fx-padding: 6 16 6 16;
+}
