@@ -73,7 +73,12 @@ public class DataStore {
         if (traders.isEmpty()) {
             seedDefaultTraders(exchange);
         } else {
-            traders.forEach(exchange::registerTrader);
+            traders.forEach(t -> {
+                if (t.getPortfolio().getHoldings().isEmpty()) {
+                    seedHoldings(t, 100);
+                }
+                exchange.registerTrader(t);
+            });
         }
 
         exchange.restoreTradeHistory(safeLoadTrades());
